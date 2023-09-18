@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TodoSchema = new Schema({
+const GameSchema = new Schema({
   gameName: {
     type: String,
     require: true
@@ -15,3 +15,7 @@ const TodoSchema = new Schema({
     default: Date.now()
   }
 })
+
+const Game = mongoose.model("Game", GameSchema)
+
+module.exports = Game;
