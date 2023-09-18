@@ -8,7 +8,7 @@ const GameSchema = new Schema({
   },
   entries: {
     type: [],
-    require: true
+    require: false
   },
   timeStamp: {
     type: String,
