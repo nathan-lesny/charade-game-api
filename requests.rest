@@ -1,0 +1,24 @@
+GET http://localhost:3001/games
+
+###
+
+POST http://localhost:3001/game/new
+Content-Type: application/json
+
+{
+  "gameName": "TestGame1",
+  "entries": ["entry1", "entry2", "entry3"]
+}
+
+###
+
+PUT http://localhost:3001/game/element/6515e6191c060f1d99d95854
+Content-type: application/json
+
+{
+  "entries": "al;skjfalsk"
+}
+
+###
+
+DELETE http://localhost:3001/game/delete/65158234808db6178a5b1c89

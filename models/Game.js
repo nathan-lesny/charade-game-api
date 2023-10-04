@@ -5,10 +5,10 @@ const GameSchema = new Schema({
   gameName: {
     type: String,
     require: true
-  },
+  }, 
   entries: {
     type: [],
-    require: false
+    require: true
   },
   timeStamp: {
     type: String,

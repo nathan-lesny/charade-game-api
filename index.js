@@ -26,7 +26,8 @@ app.get('/games', async (req, res) => {
 // Create a new game, takes in text and array of elements
 app.post('/game/new', (req, res) => {
   const game = new Game({
-    gameName: req.body.text
+    gameName: req.body.gameName,
+    entries: req.body.entries
   })
 
   game.save();
@@ -36,16 +37,15 @@ app.post('/game/new', (req, res) => {
 
 //delete game, check this for bugs!!!!!!!
 app.delete('/game/delete/:id', async (req, res) => {
-  const result = await TopologyDescription.findByIdAndDelete(req.params.id);
+  const result = await Game.findByIdAndDelete(req.params.id);
   
-  res.json({result});
+  res.json(result);
 })
 
 //Add an element to your game. Add Implementation
-app.get('/game/element/:id', async (req, res) => {
+app.put('/game/element/:id', async (req, res) => {
   const game = await Game.findById(req.params.id)
-
-  game.entries +=  req.body.text //Unsure if this works!!! CHECK
+  game.entries = [...game.entries, req.body.entries] //Unsure if this works!!! CHECK
   game.save();
 
   res.json(game);
