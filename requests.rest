@@ -16,7 +16,7 @@ PUT http://localhost:3001/game/element/6515e6191c060f1d99d95854
 Content-type: application/json
 
 {
-  "entries": "al;skjfalsk"
+  "entries": "al;skjfalsk, kjsdfj, ljsdfljsdf, jklsfsldjkf"
 }
 
 ###

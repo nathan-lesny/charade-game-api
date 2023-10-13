@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose/');
 const cors = require('cors')
+const StringToList = require('./scripts/StringToList')
 
 const app = express();
 
@@ -45,7 +46,8 @@ app.delete('/game/delete/:id', async (req, res) => {
 //Add an element to your game. Add Implementation
 app.put('/game/element/:id', async (req, res) => {
   const game = await Game.findById(req.params.id)
-  game.entries = [...game.entries, req.body.entries] //Unsure if this works!!! CHECK
+  let entryString = StringToList(req.body.entries)
+  game.entries = [...game.entries, entryString] //Unsure if this works!!! CHECK
   game.save();
 
   res.json(game);
