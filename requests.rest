@@ -12,13 +12,13 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/game/element/6515e6191c060f1d99d95854
+PUT http://localhost:3001/game/element/652b254f005370bc6ff16bb6
 Content-type: application/json
 
 {
-  "entries": "al;skjfalsk, kjsdfj, ljsdfljsdf, jklsfsldjkf"
+  "entries": "Betty, Mom, Dad, Lylea"
 }
 
 ###
 
-DELETE http://localhost:3001/game/delete/65158234808db6178a5b1c89
+DELETE http://localhost:3001/game/delete/65299a75189474b2c361e46e

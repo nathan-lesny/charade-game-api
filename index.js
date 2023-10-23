@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose/');
 const cors = require('cors')
-const StringToList = require('./scripts/StringToList')
 
 const app = express();
 
@@ -16,12 +15,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/charade-game", {
   .catch(console.error())
 
 const Game = require('./models/Game');
+const StringToList = require('./scripts/StringToList');
 
 //get the games from the database
 app.get('/games', async (req, res) => {
   const games = await Game.find();
 
   res.json(games);
+})
+
+app.get('/game-by-id/:id', async (req, res) => {
+  const result = await Game.findById(req.params.id)
+
+  res.json(result);
 })
 
 // Create a new game, takes in text and array of elements
@@ -46,8 +52,10 @@ app.delete('/game/delete/:id', async (req, res) => {
 //Add an element to your game. Add Implementation
 app.put('/game/element/:id', async (req, res) => {
   const game = await Game.findById(req.params.id)
-  let entryString = StringToList(req.body.entries)
-  game.entries = [...game.entries, entryString] //Unsure if this works!!! CHECK
+  const entryList = StringToList(req.body.entries);
+  for(let i = 0; i < entryList.length; i++) {
+    game.entries = [...game.entries, entryList[i]]
+  }
   game.save();
 
   res.json(game);
