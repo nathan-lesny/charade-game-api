@@ -34,7 +34,8 @@ app.get('/game-by-id/:id', async (req, res) => {
 app.post('/game/new', (req, res) => {
   const game = new Game({
     gameName: req.body.gameName,
-    entries: req.body.entries
+    entries: req.body.entries,
+    image: req.body.image
   })
 
   game.save();

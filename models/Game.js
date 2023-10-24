@@ -10,6 +10,10 @@ const GameSchema = new Schema({
     type: [],
     require: true
   },
+  image: {
+    type: String,
+    default: "/Place-holder-mg.png"
+  },
   timeStamp: {
     type: String,
     default: Date.now()
