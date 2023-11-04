@@ -15,6 +15,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/charade-game", {
   .catch(console.error())
 
 const Game = require('./models/Game');
+const Session = require('./models/Session');
 const StringToList = require('./scripts/StringToList');
 
 //get the games from the database
@@ -31,7 +32,7 @@ app.get('/game-by-id/:id', async (req, res) => {
 })
 
 // Create a new game, takes in text and array of elements
-app.post('/game/new', (req, res) => {
+app.post('/game/new', async (req, res) => {
   const game = new Game({
     gameName: req.body.gameName,
     entries: req.body.entries,
@@ -61,6 +62,24 @@ app.put('/game/element/:id', async (req, res) => {
 
   res.json(game);
   
+})
+
+//Create a new session for gameplay
+app.post('/session/new', async (req, res) => {
+  const session = new Session({
+    sessionName: req.body.sessionName,
+    entries: req.body.entries
+  })
+
+  session.save();
+
+  res.json(session);
+})
+
+app.delete('/session/delete/:id', async (req, res) => {
+  const result = await Session.findByIdAndDelete(req.params.id);
+  
+  res.json(result);
 })
 
 app.listen(3001, () => console.log("started on 3001"))

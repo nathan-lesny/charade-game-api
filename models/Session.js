@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const GameSchema = new Schema({
-  gameName: {
+const SessionSchema = new Schema({
+  sessionName: {
     type: String,
     require: true
-  }, 
+  },
   entries: {
     type: [],
     require: true
   },
-  image: {
-    type: String,
-    default: "/Place-holder-mg.png"
+  deviceConnected: {
+    type: Boolean,
+    default: false
   },
   timeStamp: {
     type: String,
@@ -20,6 +20,6 @@ const GameSchema = new Schema({
   }
 })
 
-const Game = mongoose.model("Game", GameSchema)
+const Session = mongoose.model("Session", SessionSchema)
 
-module.exports = Game;
+module.exports = Session;

@@ -23,3 +23,6 @@ Content-type: application/json
 ###
 
 DELETE http://localhost:3001/game/delete/65299a75189474b2c361e46e
+
+###
+
