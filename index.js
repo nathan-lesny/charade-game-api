@@ -25,6 +25,7 @@ app.get('/games', async (req, res) => {
   res.json(games);
 })
 
+
 app.get('/game-by-id/:id', async (req, res) => {
   const result = await Game.findById(req.params.id)
 
@@ -62,6 +63,13 @@ app.put('/game/element/:id', async (req, res) => {
 
   res.json(game);
   
+})
+
+//get the sessions from the database
+app.get('/sessions', async (req, res) => {
+  const sessions = await Session.find();
+
+  res.json(sessions);
 })
 
 //Create a new session for gameplay
